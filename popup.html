@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <h1>Translation Extension</h1>
+
+    <div class="setting">
+      <label for="targetLang">Translate to</label>
+      <select id="targetLang"></select>
+    </div>
+
+    <div class="setting">
+      <label for="enabled">Enable translation</label>
+      <label class="switch">
+        <input type="checkbox" id="enabled">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="status" id="status"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
