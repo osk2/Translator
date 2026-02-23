@@ -175,13 +175,7 @@ function showTooltip(data, rect) {
   speakBtn.title = 'Listen';
   speakBtn.addEventListener('click', () => {
     chrome.runtime.sendMessage(
-      { type: 'tts', text: data.original, lang: data.sourceLang },
-      (audioUrl) => {
-        if (audioUrl) {
-          const audio = new Audio(audioUrl);
-          audio.play();
-        }
-      }
+      { type: 'tts', text: data.original, lang: data.sourceLang }
     );
   });
 

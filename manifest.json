@@ -3,7 +3,8 @@
   "name": "Translation Extension",
   "version": "1.0.0",
   "description": "Modern translation tool — select text to get definitions, examples, and pronunciation",
-  "permissions": ["storage", "activeTab"],
+  "author": "osk2",
+  "permissions": ["storage", "offscreen"],
   "host_permissions": ["https://translate.googleapis.com/*", "https://translate.google.com/*"],
   "background": {
     "service_worker": "background.js"

@@ -6,27 +6,44 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
   if (request.type === 'tts') {
-    handleTTS(request.text, request.lang)
-      .then(sendResponse)
+    playTTS(request.text, request.lang)
+      .then(() => sendResponse(true))
       .catch(() => sendResponse(null));
     return true;
   }
 });
 
-async function handleTTS(text, lang) {
+async function ensureOffscreenDocument() {
+  const offscreenUrl = chrome.runtime.getURL('offscreen.html');
+  const contexts = await chrome.runtime.getContexts({
+    contextTypes: ['OFFSCREEN_DOCUMENT'],
+    documentUrls: [offscreenUrl]
+  });
+  if (contexts.length > 0) return;
+  await chrome.offscreen.createDocument({
+    url: offscreenUrl,
+    reasons: ['AUDIO_PLAYBACK'],
+    justification: 'Play Google Translate TTS audio'
+  });
+}
+
+async function playTTS(text, lang) {
   const url = new URL('https://translate.google.com/translate_tts');
   url.searchParams.set('client', 'tw-ob');
   url.searchParams.set('tl', lang);
   url.searchParams.set('q', text);
 
   const res = await fetch(url.toString());
-  if (!res.ok) return null;
+  if (!res.ok) throw new Error('TTS fetch failed');
   const blob = await res.blob();
-  return new Promise((resolve) => {
+  const dataUrl = await new Promise((resolve) => {
     const reader = new FileReader();
     reader.onloadend = () => resolve(reader.result);
     reader.readAsDataURL(blob);
   });
+
+  await ensureOffscreenDocument();
+  await chrome.runtime.sendMessage({ type: 'playAudio', dataUrl });
 }
 
 async function handleTranslate(text, targetLang) {
