@@ -1,47 +1,118 @@
 let tooltipHost = null;
+let triggerHost = null;
 
 document.addEventListener('mouseup', async (e) => {
   if (tooltipHost && tooltipHost.contains(e.target)) return;
+  if (triggerHost && triggerHost.contains(e.target)) return;
 
   const selection = window.getSelection();
   const text = selection.toString().trim();
 
   if (!text) {
-    removeTooltip();
+    removeTriggerIcon();
     return;
   }
 
-  const settings = await chrome.storage.sync.get({
-    targetLang: navigator.language.split('-')[0] || 'en',
-    enabled: true
-  });
+  let settings;
+  try {
+    settings = await chrome.storage.sync.get({
+      targetLang: navigator.language.split('-')[0] || 'en',
+      enabled: true
+    });
+  } catch {
+    return;
+  }
 
   if (!settings.enabled) return;
 
   const rect = selection.getRangeAt(0).getBoundingClientRect();
-  showLoading(rect);
-
-  chrome.runtime.sendMessage(
-    { type: 'translate', text, targetLang: settings.targetLang },
-    (response) => {
-      if (response && !response.error) {
-        showTooltip(response, rect);
-      } else {
-        removeTooltip();
-      }
-    }
-  );
+  showTriggerIcon(text, settings.targetLang, rect);
 });
 
 document.addEventListener('mousedown', (e) => {
+  if (triggerHost && !triggerHost.contains(e.target)) {
+    removeTriggerIcon();
+  }
   if (tooltipHost && !tooltipHost.contains(e.target)) {
     removeTooltip();
   }
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') removeTooltip();
+  if (e.key === 'Escape') {
+    removeTriggerIcon();
+    removeTooltip();
+  }
 });
+
+function removeTriggerIcon() {
+  if (triggerHost) {
+    triggerHost.remove();
+    triggerHost = null;
+  }
+}
+
+function showTriggerIcon(text, targetLang, rect) {
+  removeTriggerIcon();
+  removeTooltip();
+
+  triggerHost = document.createElement('div');
+  triggerHost.id = 'translation-ext-trigger';
+  const shadow = triggerHost.attachShadow({ mode: 'closed' });
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .te-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+      font-size: 16px;
+      line-height: 1;
+    }
+    .te-trigger:hover {
+      background: #f0f4ff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+  `;
+  shadow.appendChild(style);
+
+  const btn = document.createElement('div');
+  btn.className = 'te-trigger';
+  btn.innerHTML = '&#127760;';
+  btn.title = 'Translate';
+  btn.addEventListener('click', () => {
+    removeTriggerIcon();
+    showLoading(rect);
+    chrome.runtime.sendMessage(
+      { type: 'translate', text, targetLang },
+      (response) => {
+        if (response && !response.error) {
+          showTooltip(response, rect);
+        } else {
+          removeTooltip();
+        }
+      }
+    );
+  });
+  shadow.appendChild(btn);
+
+  const top = rect.bottom + window.scrollY + 4;
+  const left = rect.right + window.scrollX + 4;
+  triggerHost.style.position = 'absolute';
+  triggerHost.style.zIndex = '2147483647';
+  triggerHost.style.left = left + 'px';
+  triggerHost.style.top = (rect.top + window.scrollY - 4) + 'px';
+
+  document.body.appendChild(triggerHost);
+}
 
 function removeTooltip() {
   if (tooltipHost) {
@@ -103,9 +174,15 @@ function showTooltip(data, rect) {
   speakBtn.innerHTML = '&#128264;';
   speakBtn.title = 'Listen';
   speakBtn.addEventListener('click', () => {
-    const utterance = new SpeechSynthesisUtterance(data.original);
-    utterance.lang = data.sourceLang;
-    speechSynthesis.speak(utterance);
+    chrome.runtime.sendMessage(
+      { type: 'tts', text: data.original, lang: data.sourceLang },
+      (audioUrl) => {
+        if (audioUrl) {
+          const audio = new Audio(audioUrl);
+          audio.play();
+        }
+      }
+    );
   });
 
   const closeBtn = document.createElement('button');

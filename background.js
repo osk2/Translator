@@ -5,7 +5,29 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       .catch(err => sendResponse({ error: err.message }));
     return true;
   }
+  if (request.type === 'tts') {
+    handleTTS(request.text, request.lang)
+      .then(sendResponse)
+      .catch(() => sendResponse(null));
+    return true;
+  }
 });
+
+async function handleTTS(text, lang) {
+  const url = new URL('https://translate.google.com/translate_tts');
+  url.searchParams.set('client', 'tw-ob');
+  url.searchParams.set('tl', lang);
+  url.searchParams.set('q', text);
+
+  const res = await fetch(url.toString());
+  if (!res.ok) return null;
+  const blob = await res.blob();
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
 
 async function handleTranslate(text, targetLang) {
   const url = new URL('https://translate.googleapis.com/translate_a/single');

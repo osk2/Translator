@@ -1,4 +1,5 @@
 /* content.css - minimal host element reset */
-#translation-ext-host {
+#translation-ext-host,
+#translation-ext-trigger {
   all: initial;
 }
