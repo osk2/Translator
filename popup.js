@@ -45,7 +45,7 @@ LANGUAGES.forEach(lang => {
 
 // Load saved settings
 chrome.storage.sync.get(
-  { targetLang: navigator.language.split('-')[0] || 'en', enabled: true },
+  { targetLang: navigator.language || 'en', enabled: true },
   (settings) => {
     langSelect.value = settings.targetLang;
     enabledToggle.checked = settings.enabled;
