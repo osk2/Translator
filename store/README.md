@@ -12,7 +12,7 @@ Already exists at `icons/icon128.png`.
 
 1. Open any design tool (Figma, Canva, etc.)
 2. Create a 440x280px canvas
-3. Use the extension icon + name "Translation Extension"
+3. Use the extension icon + name "Translator"
 4. Save as `store/promo-small.png`
 
 ### Screenshots (1280x800px)

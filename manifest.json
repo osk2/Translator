@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Translation Extension",
+  "name": "Translator",
   "version": "1.0.0",
   "description": "Modern translation tool — select text to get definitions, examples, and pronunciation",
   "author": "osk2",

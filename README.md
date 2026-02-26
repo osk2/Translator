@@ -1,4 +1,4 @@
-# Translation Extension
+# Translator
 
 [<img width="206" height="58" alt="206x58-chrome-web-043497a3d766e" src="https://github.com/user-attachments/assets/9e5f3542-8f79-4885-ab05-afae1a288ae3" />](https://chromewebstore.google.com/detail/translation-extension/pfpgnbbcepcacmjdodaoohfelkolnjge)
 

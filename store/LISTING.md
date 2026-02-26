@@ -8,7 +8,7 @@ Select text on any webpage to instantly translate, hear pronunciation, and see d
 
 Translate any text on any webpage — just select it.
 
-Translation Extension is a lightweight, fast alternative to bulky translation extensions. Select text, click the translate icon, and get an instant translation right where you're reading.
+Translator is a lightweight, fast alternative to bulky translation extensions. Select text, click the translate icon, and get an instant translation right where you're reading.
 
 **Key features:**
 
