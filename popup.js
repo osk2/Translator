@@ -31,6 +31,11 @@ const LANGUAGES = [
   { code: 'hu', name: 'Hungarian' }
 ];
 
+// i18n: translate all elements with data-i18n attribute
+document.querySelectorAll('[data-i18n]').forEach(el => {
+  el.textContent = chrome.i18n.getMessage(el.dataset.i18n);
+});
+
 const langSelect = document.getElementById('targetLang');
 const enabledToggle = document.getElementById('enabled');
 const status = document.getElementById('status');
@@ -55,13 +60,13 @@ chrome.storage.sync.get(
 // Save on change
 langSelect.addEventListener('change', () => {
   chrome.storage.sync.set({ targetLang: langSelect.value }, () => {
-    showStatus('Saved');
+    showStatus(chrome.i18n.getMessage('statusSaved'));
   });
 });
 
 enabledToggle.addEventListener('change', () => {
   chrome.storage.sync.set({ enabled: enabledToggle.checked }, () => {
-    showStatus(enabledToggle.checked ? 'Enabled' : 'Disabled');
+    showStatus(enabledToggle.checked ? chrome.i18n.getMessage('statusEnabled') : chrome.i18n.getMessage('statusDisabled'));
   });
 });
 

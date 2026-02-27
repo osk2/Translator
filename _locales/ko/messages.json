@@ -1,0 +1,52 @@
+{
+  "extName": {
+    "message": "번역기"
+  },
+  "extDescription": {
+    "message": "텍스트를 선택하면 정의, 예문, 발음을 바로 확인!"
+  },
+  "popupTitle": {
+    "message": "번역기"
+  },
+  "translateTo": {
+    "message": "번역 언어"
+  },
+  "enableTranslation": {
+    "message": "번역 활성화"
+  },
+  "statusSaved": {
+    "message": "저장됨"
+  },
+  "statusEnabled": {
+    "message": "활성화됨"
+  },
+  "statusDisabled": {
+    "message": "비활성화됨"
+  },
+  "triggerTranslate": {
+    "message": "번역"
+  },
+  "tooltipTranslating": {
+    "message": "번역 중..."
+  },
+  "tooltipListen": {
+    "message": "듣기"
+  },
+  "tooltipDetected": {
+    "message": "감지된 언어: $LANG$",
+    "placeholders": {
+      "lang": {
+        "content": "$1"
+      }
+    }
+  },
+  "tooltipTranslation": {
+    "message": "번역"
+  },
+  "tooltipDefinition": {
+    "message": "정의"
+  },
+  "tooltipExamples": {
+    "message": "예문"
+  }
+}

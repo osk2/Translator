@@ -1,0 +1,52 @@
+{
+  "extName": {
+    "message": "翻译器"
+  },
+  "extDescription": {
+    "message": "点选文字立刻查询释义、例句与发音！"
+  },
+  "popupTitle": {
+    "message": "翻译器"
+  },
+  "translateTo": {
+    "message": "翻译为"
+  },
+  "enableTranslation": {
+    "message": "启用翻译"
+  },
+  "statusSaved": {
+    "message": "已保存"
+  },
+  "statusEnabled": {
+    "message": "已启用"
+  },
+  "statusDisabled": {
+    "message": "已停用"
+  },
+  "triggerTranslate": {
+    "message": "翻译"
+  },
+  "tooltipTranslating": {
+    "message": "翻译中..."
+  },
+  "tooltipListen": {
+    "message": "收听"
+  },
+  "tooltipDetected": {
+    "message": "检测语言：$LANG$",
+    "placeholders": {
+      "lang": {
+        "content": "$1"
+      }
+    }
+  },
+  "tooltipTranslation": {
+    "message": "翻译"
+  },
+  "tooltipDefinition": {
+    "message": "释义"
+  },
+  "tooltipExamples": {
+    "message": "例句"
+  }
+}

@@ -33,6 +33,8 @@ No data collection. No analytics. No accounts. Your selected text is sent only t
 
 Open source: https://github.com/osk2/translator
 
+Privacy policy: https://github.com/osk2/translator/blob/main/PRIVACY_POLICY.md
+
 ## Category
 
 Productivity
@@ -40,3 +42,7 @@ Productivity
 ## Language
 
 English
+
+## Single Purpose Description
+
+This extension translates selected text on web pages using Google Translate, displaying translations, definitions, examples, and pronunciation in an inline tooltip.

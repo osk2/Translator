@@ -1,10 +1,10 @@
-# Privacy Policy — Translation Extension
+# Privacy Policy — Translator
 
-**Last updated:** 2026-02-23
+**Last updated:** 2026-02-27
 
 ## What This Extension Does
 
-Translation Extension lets you select text on any webpage and see translations, definitions, and pronunciation. It uses Google Translate to perform translations.
+Translator lets you select text on any webpage and see translations, definitions, and pronunciation. It uses Google Translate to perform translations.
 
 ## Data We Collect
 
@@ -34,6 +34,16 @@ This is the same public API used by Google Translate. Google's own privacy polic
 ## Data Selling
 
 We do not sell, trade, or transfer any user data to anyone.
+
+## Chrome Web Store User Data Policy Compliance
+
+The use of information received from Google APIs will adhere to the [Chrome Web Store User Data Policy](https://developer.chrome.com/docs/webstore/program-policies/user-data-faq), including the Limited Use requirements.
+
+Specifically:
+- Data use is limited to providing and improving the extension's single purpose (translation)
+- User data is not transferred to third parties except as necessary to provide translation via Google Translate
+- User data is not used for purposes unrelated to the extension's core functionality
+- User data is not used for personalized advertising, sold to data brokers, or used for creditworthiness determination
 
 ## Permissions Explained
 

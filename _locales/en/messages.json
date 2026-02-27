@@ -1,0 +1,68 @@
+{
+  "extName": {
+    "message": "Translator",
+    "description": "Extension name shown in Chrome Web Store and extension management"
+  },
+  "extDescription": {
+    "message": "Select text to instantly look up definitions, examples, and pronunciation!",
+    "description": "Extension description shown in Chrome Web Store"
+  },
+  "popupTitle": {
+    "message": "Translator",
+    "description": "Title displayed in the popup header"
+  },
+  "translateTo": {
+    "message": "Translate to",
+    "description": "Label for language selection dropdown"
+  },
+  "enableTranslation": {
+    "message": "Enable translation",
+    "description": "Label for the enable/disable toggle"
+  },
+  "statusSaved": {
+    "message": "Saved",
+    "description": "Status message after saving language preference"
+  },
+  "statusEnabled": {
+    "message": "Enabled",
+    "description": "Status message after enabling translation"
+  },
+  "statusDisabled": {
+    "message": "Disabled",
+    "description": "Status message after disabling translation"
+  },
+  "triggerTranslate": {
+    "message": "Translate",
+    "description": "Title for the trigger button that appears on text selection"
+  },
+  "tooltipTranslating": {
+    "message": "Translating...",
+    "description": "Loading state text in the tooltip"
+  },
+  "tooltipListen": {
+    "message": "Listen",
+    "description": "Title for the speaker/TTS button"
+  },
+  "tooltipDetected": {
+    "message": "Detected: $LANG$",
+    "description": "Language detection badge in the tooltip",
+    "placeholders": {
+      "lang": {
+        "content": "$1",
+        "example": "EN"
+      }
+    }
+  },
+  "tooltipTranslation": {
+    "message": "Translation",
+    "description": "Section label for the translation result"
+  },
+  "tooltipDefinition": {
+    "message": "Definition",
+    "description": "Section label for word definitions"
+  },
+  "tooltipExamples": {
+    "message": "Examples",
+    "description": "Section label for usage examples"
+  }
+}

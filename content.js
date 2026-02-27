@@ -87,7 +87,7 @@ function showTriggerIcon(text, targetLang, rect) {
   const btn = document.createElement('div');
   btn.className = 'te-trigger';
   btn.innerHTML = '&#127760;';
-  btn.title = 'Translate';
+  btn.title = chrome.i18n.getMessage('triggerTranslate');
   btn.addEventListener('click', () => {
     removeTriggerIcon();
     showLoading(rect);
@@ -133,7 +133,7 @@ function showLoading(rect) {
 
   const container = document.createElement('div');
   container.className = 'te-tooltip';
-  container.innerHTML = '<div class="te-loading"><span class="te-spinner"></span> Translating...</div>';
+  container.innerHTML = '<div class="te-loading"><span class="te-spinner"></span> ' + chrome.i18n.getMessage('tooltipTranslating') + '</div>';
   shadow.appendChild(container);
 
   positionTooltip(tooltipHost, rect);
@@ -172,7 +172,7 @@ function showTooltip(data, rect) {
   const speakBtn = document.createElement('button');
   speakBtn.className = 'te-speak-btn';
   speakBtn.innerHTML = '&#128264;';
-  speakBtn.title = 'Listen';
+  speakBtn.title = chrome.i18n.getMessage('tooltipListen');
   speakBtn.addEventListener('click', () => {
     chrome.runtime.sendMessage(
       { type: 'tts', text: data.original, lang: data.sourceLang }
@@ -200,7 +200,7 @@ function showTooltip(data, rect) {
   if (data.sourceLang && data.sourceLang !== 'unknown') {
     const badge = document.createElement('div');
     badge.className = 'te-lang-line';
-    badge.textContent = 'Detected: ' + data.sourceLang.toUpperCase();
+    badge.textContent = chrome.i18n.getMessage('tooltipDetected', [data.sourceLang.toUpperCase()]);
     container.appendChild(badge);
   }
 
@@ -210,7 +210,7 @@ function showTooltip(data, rect) {
     section.className = 'te-section';
     const label = document.createElement('div');
     label.className = 'te-label';
-    label.textContent = 'Translation';
+    label.textContent = chrome.i18n.getMessage('tooltipTranslation');
     const value = document.createElement('div');
     value.className = 'te-value';
     value.textContent = data.translation;
@@ -224,7 +224,7 @@ function showTooltip(data, rect) {
     section.className = 'te-section';
     const label = document.createElement('div');
     label.className = 'te-label';
-    label.textContent = 'Definition';
+    label.textContent = chrome.i18n.getMessage('tooltipDefinition');
     section.appendChild(label);
     data.definitions.slice(0, 3).forEach(def => {
       const item = document.createElement('div');
@@ -246,7 +246,7 @@ function showTooltip(data, rect) {
     section.className = 'te-section';
     const label = document.createElement('div');
     label.className = 'te-label';
-    label.textContent = 'Examples';
+    label.textContent = chrome.i18n.getMessage('tooltipExamples');
     section.appendChild(label);
     data.examples.slice(0, 2).forEach(ex => {
       const item = document.createElement('div');

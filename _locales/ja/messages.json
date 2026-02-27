@@ -1,0 +1,52 @@
+{
+  "extName": {
+    "message": "翻訳"
+  },
+  "extDescription": {
+    "message": "テキストを選択するだけで定義・例文・発音をすぐに検索！"
+  },
+  "popupTitle": {
+    "message": "翻訳"
+  },
+  "translateTo": {
+    "message": "翻訳先"
+  },
+  "enableTranslation": {
+    "message": "翻訳を有効にする"
+  },
+  "statusSaved": {
+    "message": "保存しました"
+  },
+  "statusEnabled": {
+    "message": "有効"
+  },
+  "statusDisabled": {
+    "message": "無効"
+  },
+  "triggerTranslate": {
+    "message": "翻訳"
+  },
+  "tooltipTranslating": {
+    "message": "翻訳中..."
+  },
+  "tooltipListen": {
+    "message": "再生"
+  },
+  "tooltipDetected": {
+    "message": "検出された言語：$LANG$",
+    "placeholders": {
+      "lang": {
+        "content": "$1"
+      }
+    }
+  },
+  "tooltipTranslation": {
+    "message": "翻訳"
+  },
+  "tooltipDefinition": {
+    "message": "定義"
+  },
+  "tooltipExamples": {
+    "message": "例文"
+  }
+}

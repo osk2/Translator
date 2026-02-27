@@ -1,0 +1,52 @@
+{
+  "extName": {
+    "message": "翻譯器"
+  },
+  "extDescription": {
+    "message": "點選文字立刻查詢釋義、例句與發音！"
+  },
+  "popupTitle": {
+    "message": "翻譯器"
+  },
+  "translateTo": {
+    "message": "翻譯為"
+  },
+  "enableTranslation": {
+    "message": "啟用翻譯"
+  },
+  "statusSaved": {
+    "message": "已儲存"
+  },
+  "statusEnabled": {
+    "message": "已啟用"
+  },
+  "statusDisabled": {
+    "message": "已停用"
+  },
+  "triggerTranslate": {
+    "message": "翻譯"
+  },
+  "tooltipTranslating": {
+    "message": "翻譯中..."
+  },
+  "tooltipListen": {
+    "message": "聆聽"
+  },
+  "tooltipDetected": {
+    "message": "偵測語言：$LANG$",
+    "placeholders": {
+      "lang": {
+        "content": "$1"
+      }
+    }
+  },
+  "tooltipTranslation": {
+    "message": "翻譯"
+  },
+  "tooltipDefinition": {
+    "message": "釋義"
+  },
+  "tooltipExamples": {
+    "message": "例句"
+  }
+}
